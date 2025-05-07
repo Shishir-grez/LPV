@@ -1,0 +1,83 @@
+
+#### Ipynb for colab / kaggle , .cu file for local codes 
+
+
+---
+
+### ✅ 1. Download and add NVIDIA GPG key securely:
+
+curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/3bf863cc.pub | sudo gpg --dearmor -o /usr/share/keyrings/cuda-wsl.gpg
+
+
+---
+
+### ✅ 2. Add the repository with GPG signature:
+
+echo "deb [signed-by=/usr/share/keyrings/cuda-wsl.gpg] https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/ /" | sudo tee /etc/apt/sources.list.d/cuda-wsl.list
+
+
+---
+
+### ✅ 3. Set package priority (pin file):
+
+
+wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-wsl-ubuntu.pin
+sudo mv cuda-wsl-ubuntu.pin /etc/apt/preferences.d/cuda-repository-pin-600
+
+
+---
+
+### ✅ 4. Update and install CUDA:
+
+
+sudo apt update
+sudo apt install -y cuda
+
+
+---
+
+### ✅ 5. (Optional) Add CUDA to PATH:
+
+
+echo 'export PATH=/usr/local/cuda/bin:$PATH' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+source ~/.bashrc
+
+
+---
+
+### ✅ 6. Verify installation:
+
+
+nvcc --version
+
+
+---
+
+### ✅ 7. Check gpu name :
+
+nvidia-smi
+
+---
+
+### ✅ 8. Look up architecture online :
+
+google
+
+---
+
+### ✅ 9. Complile :
+
+nvcc -arch= *(relevant architecture)* your_code.cu -o your_program
+
+other wise : 
+
+[ on kaggle / colab ]
+
+nvcc -arch=sm_86 your_code.cu -o your_program 
+
+---
+
+### ✅ 10. Run :
+
+./your_program
