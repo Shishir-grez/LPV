@@ -1,0 +1,7 @@
+To run openmp codes 
+
+## Compile : 
+g++ -fopenmp file_name.cpp -o file_name
+
+## Run : 
+./file_name
